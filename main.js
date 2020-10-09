@@ -1,4 +1,5 @@
 let pizza = 0
+let tpmValue = 0
 
 let clickUpgrades = {
   pizzaCutters: {
@@ -29,8 +30,10 @@ let autoUpgrades = {
 function buyPizzaCutters() {
   if (pizza >= 50) {
     clickUpgrades.pizzaCutters.quantity++
-    updatePizzaCutters()
     pizza -= 50
+    updatePizzaCutters()
+    updateTPM()
+    tpm()
   }
 }
 
@@ -43,8 +46,10 @@ function updatePizzaCutters() {
 function buyPizzaBoxes() {
   if (pizza >= 500) {
     clickUpgrades.pizzaBoxes.quantity++
-    updatePizzaBoxes()
     pizza -= 500
+    updatePizzaBoxes()
+    updateTPM()
+    tpm()
   }
 }
 
@@ -57,8 +62,10 @@ function updatePizzaBoxes() {
 function buyPizzaServers() {
   if (pizza >= 250) {
     autoUpgrades.pizzaServers.quantity++
-    updatePizzaServers()
     pizza -= 250
+    updatePizzaServers()
+    updateTPM()
+    tpm()
   }
 }
 
@@ -71,8 +78,10 @@ function updatePizzaServers() {
 function buyDeliveryDrivers() {
   if (pizza >= 5000) {
     autoUpgrades.deliveryDrivers.quantity++
-    updateDeliveryDrivers()
     pizza -= 5000
+    updateDeliveryDrivers()
+    updateTPM()
+    tpm()
   }
 }
 
@@ -94,6 +103,15 @@ function update() {
   pizzaElem.innerText = `Pieces of Pizza: ${pizza}`
 }
 
+function updateTPM() {
+  tpmValue = ((clickUpgrades.pizzaCutters.quantity) + (autoUpgrades.pizzaServers.quantity * 5) + (autoUpgrades.deliveryDrivers.quantity * 25) + (clickUpgrades.pizzaBoxes.quantity * 10))
+}
+
+function tpm() {
+  let tpmElem = document.getElementById("tpmValue")
+  tpmElem.innerText = `TPM (Total Pizza Multiplier): ${tpmValue}`
+}
+
 
 
 update()
@@ -101,3 +119,4 @@ updatePizzaCutters()
 updatePizzaBoxes()
 updatePizzaServers()
 updateDeliveryDrivers()
+tpm()
