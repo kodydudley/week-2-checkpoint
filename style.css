@@ -1,0 +1,31 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 15vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  height: 7vh;
+}
+
+.headerImg {
+  height: 20vh;
+}
+
+.bodyBG {
+  background-image: url(https://cdna.artstation.com/p/assets/images/images/001/187/786/large/kevin-autry-cartoon-80s-beds-resized.jpg?1441823761);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cardBG {
+  background-color: rgba(0, 0, 0, 0.529);
+}
