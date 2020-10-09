@@ -1,11 +1,13 @@
 let pizza = 0
 let tpmValue = 0
+let ppsValue = 0
+let collectionInterval = 0
 
 let clickUpgrades = {
   pizzaCutters: {
     price: 50,
     quantity: 0,
-    multiplier: 1,
+    multiplier: 2,
   },
   pizzaBoxes: {
     price: 500,
@@ -64,8 +66,8 @@ function buyPizzaServers() {
     autoUpgrades.pizzaServers.quantity++
     pizza -= 250
     updatePizzaServers()
-    updateTPM()
-    tpm()
+    updatePPS()
+    pps()
   }
 }
 
@@ -80,8 +82,8 @@ function buyDeliveryDrivers() {
     autoUpgrades.deliveryDrivers.quantity++
     pizza -= 5000
     updateDeliveryDrivers()
-    updateTPM()
-    tpm()
+    updatePPS()
+    pps()
   }
 }
 
@@ -91,9 +93,19 @@ function updateDeliveryDrivers() {
   update()
 }
 
-
 function getPizza() {
-  pizza++
+  pizza += (1 + tpmValue)
+  update()
+}
+
+
+function getAutoPizza() {
+  for (const key in autoUpgrades) {
+    if (autoUpgrades.hasOwnProperty(key)) {
+      const element = autoUpgrades[key];
+      pizza += (element.multiplier * element.quantity)
+    }
+  }
   update()
 }
 
@@ -104,7 +116,7 @@ function update() {
 }
 
 function updateTPM() {
-  tpmValue = ((clickUpgrades.pizzaCutters.quantity) + (autoUpgrades.pizzaServers.quantity * 5) + (autoUpgrades.deliveryDrivers.quantity * 25) + (clickUpgrades.pizzaBoxes.quantity * 10))
+  tpmValue = ((clickUpgrades.pizzaCutters.quantity) + (clickUpgrades.pizzaBoxes.quantity * 10))
 }
 
 function tpm() {
@@ -112,7 +124,18 @@ function tpm() {
   tpmElem.innerText = `TPM (Total Pizza Multiplier): ${tpmValue}`
 }
 
+function updatePPS() {
+  ppsValue = ((autoUpgrades.pizzaServers.quantity * 5) + (autoUpgrades.deliveryDrivers.quantity * 25))
+}
 
+function pps() {
+  let ppsElem = document.getElementById("ppsValue")
+  ppsElem.innerText = `APPS (Auto Pizzas Per Second): ${ppsValue}`
+}
+
+function startInterval() {
+  collectionInterval = setInterval(getAutoPizza, 3000);
+}
 
 update()
 updatePizzaCutters()
@@ -120,3 +143,5 @@ updatePizzaBoxes()
 updatePizzaServers()
 updateDeliveryDrivers()
 tpm()
+pps()
+startInterval()
