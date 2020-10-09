@@ -26,64 +26,61 @@ let autoUpgrades = {
   }
 }
 
-// UDGRADE BUTTONS SECTION
 function buyPizzaCutters() {
-  clickUpgrades.pizzaCutters.quantity++
-  updatePizzaCutters()
+  if (pizza >= 50) {
+    clickUpgrades.pizzaCutters.quantity++
+    updatePizzaCutters()
+    pizza -= 50
+  }
 }
 
 function updatePizzaCutters() {
-  if (pizza >= 50) {
-    let pizzaCuttersElem = document.getElementById("pizzaCuttersValue")
-    pizzaCuttersElem.innerText = `Pizza Cutters: ${clickUpgrades.pizzaCutters.quantity}`
-    pizza -= 50
-    update()
-  }
+  let pizzaCuttersElem = document.getElementById("pizzaCuttersValue")
+  pizzaCuttersElem.innerText = `Pizza Cutters: ${clickUpgrades.pizzaCutters.quantity}`
+  update()
 }
 
 function buyPizzaBoxes() {
-  clickUpgrades.pizzaBoxes.quantity++
-  updatePizzaBoxes()
+  if (pizza >= 500) {
+    clickUpgrades.pizzaBoxes.quantity++
+    updatePizzaBoxes()
+    pizza -= 500
+  }
 }
 
 function updatePizzaBoxes() {
-  if (pizza >= 500) {
-    let pizzaBoxesElem = document.getElementById("pizzaBoxesValue")
-    pizzaBoxesElem.innerText = `Pizza Boxes: ${clickUpgrades.pizzaBoxes.quantity}`
-    pizza -= 500
-    update()
-  }
+  let pizzaBoxesElem = document.getElementById("pizzaBoxesValue")
+  pizzaBoxesElem.innerText = `Pizza Boxes: ${clickUpgrades.pizzaBoxes.quantity}`
+  update()
 }
 
 function buyPizzaServers() {
-  autoUpgrades.pizzaServers.quantity++
-  updatePizzaServers()
+  if (pizza >= 250) {
+    autoUpgrades.pizzaServers.quantity++
+    updatePizzaServers()
+    pizza -= 250
+  }
 }
 
 function updatePizzaServers() {
-  if (pizza >= 250) {
-    let pizzaServersElem = document.getElementById("pizzaServersValue")
-    pizzaServersElem.innerText = `Pizza Servers: ${autoUpgrades.pizzaServers.quantity}`
-    pizza -= 250
-    update()
-  }
+  let pizzaServersElem = document.getElementById("pizzaServersValue")
+  pizzaServersElem.innerText = `Pizza Servers: ${autoUpgrades.pizzaServers.quantity}`
+  update()
 }
 
 function buyDeliveryDrivers() {
-  autoUpgrades.deliveryDrivers.quantity++
-  updateDeliveryDrivers()
-}
-
-function updateDeliveryDrivers() {
   if (pizza >= 5000) {
-    let deliveryDriversElem = document.getElementById("deliveryDriversValue")
-    deliveryDriversElem.innerText = `Delivery Drivers: ${autoUpgrades.deliveryDrivers.quantity}`
-    pizza -= 500
-    update()
+    autoUpgrades.deliveryDrivers.quantity++
+    updateDeliveryDrivers()
+    pizza -= 5000
   }
 }
 
-
+function updateDeliveryDrivers() {
+  let deliveryDriversElem = document.getElementById("deliveryDriversValue")
+  deliveryDriversElem.innerText = `Delivery Drivers: ${autoUpgrades.deliveryDrivers.quantity}`
+  update()
+}
 
 
 function getPizza() {
@@ -96,6 +93,9 @@ function update() {
   let pizzaElem = document.getElementById("pizza")
   pizzaElem.innerText = `Pieces of Pizza: ${pizza}`
 }
+
+
+
 update()
 updatePizzaCutters()
 updatePizzaBoxes()
