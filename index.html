@@ -38,36 +38,42 @@
         </div>
       </div>
       <div class="col-4">
-        <img src="https://thumbs.gfycat.com/AdventurousFemaleHammerheadbird-max-1mb.gif" alt="" onclick="getPizza()">
+        <img
+          src="https://sites.google.com/a/mail.usf.edu/pizzatime/_/rsrc/1468860289137/home/TMNT_Pizza_Time_Clockbig.png?height=400&width=400"
+          alt="" onclick="getPizza()">
       </div>
       <div class="col-4">
         <h1 class="bg-success rounded">INVENTORY</h1>
         <div class="row">
           <div class="col-8 pt-3 pb-3 offset-2 rounded cardBG">
             <h2 id="pizza"></h2>
-            <h4>Pizza Cutters:</h4>
-            <h4>Pizza Servers:</h4>
-            <h4>Pizza Boxes:</h4>
-            <h4>Delivery Drivers:</h4>
+            <h4 id="pizzaCuttersValue">Pizza Cutters:</h4>
+            <h4 id="pizzaServersValue">Pizza Servers:</h4>
+            <h4 id="pizzaBoxesValue">Pizza Boxes:</h4>
+            <h4 id="deliveryDriversValue">Delivery Drivers:</h4>
           </div>
         </div>
       </div>
     </div>
-    <div class="row pt-5">
+    <div class="row">
       <div class="col-4 offset-4 text-center text-light">
         <h1 class="bg-success rounded">STORE</h1>
         <div class="row">
           <div class="col-10 offset-1 rounded cardBG d-flex">
             <div class="col-6 pt-3">
-              <button class="btn btn-block btn-outline-success">+1 Pizza Cutter</button>
+              <button class="btn btn-block btn-outline-success" id="pizzaCutters" onclick="buyPizzaCutters()">+1 Pizza
+                Cutter</button>
               <p>= 50</p>
-              <button class="btn btn-block btn-outline-success">+1 Pizza Box</button>
+              <button class="btn btn-block btn-outline-success" id="pizzaBoxes" onclick="buyPizzaBoxes()">+1 Pizza
+                Box</button>
               <p>= 500</p>
             </div>
             <div class="col-6 pt-3">
-              <button class="btn btn-block btn-outline-success">+1 Pizza Server</button>
+              <button class="btn btn-block btn-outline-success" id="pizzaServers" onclick="buyPizzaServers()">+1 Pizza
+                Server</button>
               <p>= 250</p>
-              <button class="btn btn-block btn-outline-success">+1 Delivery Driver</button>
+              <button class="btn btn-block btn-outline-success" id="deliveryDrivers" onclick="buyDeliveryDrivers()">+1
+                Delivery Driver</button>
               <p>= 5000</p>
             </div>
           </div>
