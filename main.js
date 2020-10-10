@@ -3,6 +3,7 @@ let tpmValue = 0
 let ppsValue = 0
 let collectionInterval = 0
 
+
 let clickUpgrades = {
   pizzaCutters: {
     price: 50,
@@ -28,6 +29,7 @@ let autoUpgrades = {
     multiplier: 25,
   }
 }
+
 
 function buyPizzaCutters() {
   if (pizza >= 50) {
@@ -130,7 +132,7 @@ function updatePPS() {
 
 function pps() {
   let ppsElem = document.getElementById("ppsValue")
-  ppsElem.innerText = `APPS (Auto Pizzas Per Second): ${ppsValue}`
+  ppsElem.innerText = `APPS (Auto Pizzas Per 3 Seconds): ${ppsValue}`
 }
 
 function startInterval() {
